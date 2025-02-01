@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import com.octelspace.newspro.presentation.onboarding.OnBoardingScreen
 import com.octelspace.newspro.ui.theme.NewsProTheme
 
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // To support Edge To Edge enableEdgeToEdge()
+        //WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen()
         setContent {
             NewsProTheme {
