@@ -1,6 +1,7 @@
 package com.octelspace.newspro
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,19 +17,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.lifecycleScope
+import com.octelspace.newspro.domain.usecases.AppEntryUseCases
 import com.octelspace.newspro.presentation.onboarding.OnBoardingScreen
+import com.octelspace.newspro.presentation.onboarding.OnBoardingViewModel
 import com.octelspace.newspro.ui.theme.NewsProTheme
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // To support Edge To Edge enableEdgeToEdge()
         //WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen()
+        lifecycleScope.launch {
+            
+        }
         setContent {
             NewsProTheme {
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)){
-                    OnBoardingScreen()
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(
+                        event = viewModel::onEvent
+                    )
                 }
             }
         }
