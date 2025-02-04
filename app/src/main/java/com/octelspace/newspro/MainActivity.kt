@@ -15,7 +15,6 @@ import com.octelspace.newspro.ui.theme.NewsProTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-@HiltViewModel
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
