@@ -22,7 +22,7 @@ class LocalUserManagerImp(
         }
     }
 
-    override suspend fun readAppEntry(): Flow<Boolean> {
+    override fun readAppEntry(): Flow<Boolean> {
         return context.dataStore.data.map {
             preferences ->
             preferences[PreferencesKeys.App_Enrty] ?: false

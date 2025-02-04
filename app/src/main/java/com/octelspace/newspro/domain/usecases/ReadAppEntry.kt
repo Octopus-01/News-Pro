@@ -1,13 +1,12 @@
 package com.octelspace.newspro.domain.usecases
 
-import android.app.LocaleManager
+import com.octelspace.newspro.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.Flow
 
 class ReadAppEntry(
-    private val localUserManager: LocaleManager
+    private val localUserManager: LocalUserManager
 ) {
-    suspend operator fun invoke(): Flow<Boolean>{
+    operator fun invoke(): Flow<Boolean>{
         return localUserManager.readAppEntry()
-
     }
 }
