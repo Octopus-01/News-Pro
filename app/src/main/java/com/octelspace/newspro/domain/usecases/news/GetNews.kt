@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class GetNews(
     private val newsRepositroy: NewsRepositroy
+    //private val appEntryUseCases: AppEntryUseCases
 
 ) {
     operator fun invoke(sources: List<String>) : Flow<PagingData<Article>>{
