@@ -1,4 +1,4 @@
-package com.octelspace.newspro.domain.usecases
+package com.octelspace.newspro.domain.usecases.app_entry
 
 data class AppEntryUseCases(
     val readAppEntry: ReadAppEntry,

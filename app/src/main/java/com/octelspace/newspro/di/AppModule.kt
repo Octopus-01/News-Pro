@@ -1,12 +1,11 @@
 package com.octelspace.newspro.di
 
 import android.app.Application
-import android.app.LocaleManager
 import com.octelspace.newspro.data.mamager.LocalUserManagerImp
 import com.octelspace.newspro.domain.manager.LocalUserManager
-import com.octelspace.newspro.domain.usecases.AppEntryUseCases
-import com.octelspace.newspro.domain.usecases.ReadAppEntry
-import com.octelspace.newspro.domain.usecases.SaveAppEntry
+import com.octelspace.newspro.domain.usecases.app_entry.AppEntryUseCases
+import com.octelspace.newspro.domain.usecases.app_entry.ReadAppEntry
+import com.octelspace.newspro.domain.usecases.app_entry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

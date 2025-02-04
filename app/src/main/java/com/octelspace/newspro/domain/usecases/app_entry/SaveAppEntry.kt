@@ -1,6 +1,5 @@
-package com.octelspace.newspro.domain.usecases
+package com.octelspace.newspro.domain.usecases.app_entry
 
-import android.app.LocaleManager
 import com.octelspace.newspro.domain.manager.LocalUserManager
 
 class SaveAppEntry(

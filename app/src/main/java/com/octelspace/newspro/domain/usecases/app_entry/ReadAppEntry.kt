@@ -1,4 +1,4 @@
-package com.octelspace.newspro.domain.usecases
+package com.octelspace.newspro.domain.usecases.app_entry
 
 import com.octelspace.newspro.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.Flow
