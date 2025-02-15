@@ -3,10 +3,9 @@
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.octelspace.newspro.domain.model.Article
-import com.octelspace.newspro.domain.model.Source
 
-class NewPagingSource(
-    private val newsApi : NewApi,
+ class NewPagingSource(
+    private val newsApi : NewsApi,
     private val source : String
 ) : PagingSource<Int, Article>(){
     private var totalNewsCount = 0

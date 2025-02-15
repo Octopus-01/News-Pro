@@ -5,7 +5,7 @@ import com.octelspace.newspro.utils.Constants.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NewApi {
+interface NewsApi {
 
     @GET("everything")
     suspend fun getNews(
