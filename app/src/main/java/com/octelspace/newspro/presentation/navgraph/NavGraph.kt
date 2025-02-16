@@ -13,6 +13,8 @@ import com.octelspace.newspro.presentation.home.HomeScreen
 import com.octelspace.newspro.presentation.home.HomeViewModel
 import com.octelspace.newspro.presentation.onboarding.OnBoardingScreen
 import com.octelspace.newspro.presentation.onboarding.OnBoardingViewModel
+import com.octelspace.newspro.presentation.search.SearchScreen
+import com.octelspace.newspro.presentation.search.SearchViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
@@ -36,7 +38,7 @@ fun NavGraph(
             }
         }
 
-        navigation(
+        /*navigation(
             route = Routs.NewsNavigation.routs,
             startDestination = Routs.NewsNavigatorScreen.routs
         ){
@@ -49,6 +51,18 @@ fun NavGraph(
                     articles = articles,
                     navigate = {}
                 )
+            }
+        }*/
+
+        navigation(
+            route = Routs.NewsNavigation.routs,
+            startDestination = Routs.NewsNavigatorScreen.routs
+        ){
+            composable(
+                route = Routs.NewsNavigatorScreen.routs
+            ){
+                val viewModel: SearchViewModel = hiltViewModel()
+                SearchScreen(state = viewModel.state.value, event = viewModel::onEvent, navigate = {})
             }
         }
     }

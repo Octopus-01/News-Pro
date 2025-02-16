@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.octelspace.newspro.data.remote.NewsApi
 import com.octelspace.newspro.data.remote.NewPagingSource
+import com.octelspace.newspro.data.remote.SearchNewsPagingSource
 import com.octelspace.newspro.domain.model.Article
 import com.octelspace.newspro.domain.repository.NewsRepositroy
 import kotlinx.coroutines.flow.Flow
@@ -20,6 +21,19 @@ class NewsRepositoryimpl(
                 NewPagingSource(
                     newsApi = newsApi,
                     source = sources.joinToString(separator = ",")
+                )
+            }
+        ).flow
+    }
+
+    override fun searchNews(serchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                SearchNewsPagingSource(
+                    searchQuery = serchQuery,
+                    newsApi = newsApi,
+                    sources = sources.joinToString(separator = ",")
                 )
             }
         ).flow

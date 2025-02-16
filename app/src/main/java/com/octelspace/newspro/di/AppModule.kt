@@ -11,6 +11,7 @@ import com.octelspace.newspro.domain.usecases.app_entry.ReadAppEntry
 import com.octelspace.newspro.domain.usecases.app_entry.SaveAppEntry
 import com.octelspace.newspro.domain.usecases.news.GetNews
 import com.octelspace.newspro.domain.usecases.news.NewsUseCases
+import com.octelspace.newspro.domain.usecases.news.SearchNews
 import com.octelspace.newspro.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -62,7 +63,8 @@ object AppModule {
         newsRepositroy: NewsRepositroy
     ) : NewsUseCases{
         return NewsUseCases(
-            getNews = GetNews(newsRepositroy)
+            getNews = GetNews(newsRepositroy),
+            searchNews = SearchNews(newsRepositroy)
         )
 
     }
