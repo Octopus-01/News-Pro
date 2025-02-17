@@ -13,9 +13,12 @@ import com.octelspace.newspro.domain.repository.NewsRepositroy
 import com.octelspace.newspro.domain.usecases.app_entry.AppEntryUseCases
 import com.octelspace.newspro.domain.usecases.app_entry.ReadAppEntry
 import com.octelspace.newspro.domain.usecases.app_entry.SaveAppEntry
+import com.octelspace.newspro.domain.usecases.news.DeleteArticle
 import com.octelspace.newspro.domain.usecases.news.GetNews
 import com.octelspace.newspro.domain.usecases.news.NewsUseCases
 import com.octelspace.newspro.domain.usecases.news.SearchNews
+import com.octelspace.newspro.domain.usecases.news.SelectArticle
+import com.octelspace.newspro.domain.usecases.news.UpsertArticle
 import com.octelspace.newspro.utils.Constants.BASE_URL
 import com.octelspace.newspro.utils.Constants.NEWS_DATABASE_NAME
 import dagger.Module
@@ -65,11 +68,15 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsUseCases(
-        newsRepositroy: NewsRepositroy
+        newsRepositroy: NewsRepositroy,
+        newsDao: NewsDao
     ) : NewsUseCases{
         return NewsUseCases(
             getNews = GetNews(newsRepositroy),
-            searchNews = SearchNews(newsRepositroy)
+            searchNews = SearchNews(newsRepositroy),
+            upsertArticle = UpsertArticle(newsDao),
+            deleteArticle = DeleteArticle(newsDao),
+            selectArticle = SelectArticle(newsDao)
         )
 
     }
