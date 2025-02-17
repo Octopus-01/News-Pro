@@ -1,6 +1,10 @@
 package com.octelspace.newspro.di
 
 import android.app.Application
+import androidx.room.Room
+import com.octelspace.newspro.data.local.NewsDao
+import com.octelspace.newspro.data.local.NewsDatabase
+import com.octelspace.newspro.data.local.NewsTypeConvertor
 import com.octelspace.newspro.data.mamager.LocalUserManagerImp
 import com.octelspace.newspro.data.remote.NewsApi
 import com.octelspace.newspro.data.remote.repository.NewsRepositoryimpl
@@ -13,6 +17,7 @@ import com.octelspace.newspro.domain.usecases.news.GetNews
 import com.octelspace.newspro.domain.usecases.news.NewsUseCases
 import com.octelspace.newspro.domain.usecases.news.SearchNews
 import com.octelspace.newspro.utils.Constants.BASE_URL
+import com.octelspace.newspro.utils.Constants.NEWS_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -69,5 +74,25 @@ object AppModule {
 
     }
 
+    @Provides
+    @Singleton
+    fun provideNewsDatabase(
+        application: Application
+    ) : NewsDatabase{
+        return Room.databaseBuilder(
+            context = application,
+            klass = NewsDatabase::class.java,
+            name = NEWS_DATABASE_NAME
+        ).addTypeConverter(
+            NewsTypeConvertor()
+        ).fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsDao(
+        newsDatabase: NewsDatabase
+    ):NewsDao = newsDatabase.newsDao
 
 }
